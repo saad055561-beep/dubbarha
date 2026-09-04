@@ -1,157 +1,179 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<title>دبّرها 0.1</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#14532d">
+<title>دبّرها</title>
 <style>
-  *{box-sizing:border-box}
-  body{margin:0;background:#eef7f2;font-family:Arial,"Tahoma",sans-serif;color:#18352d}
-  .phone{width:min(100%,430px);min-height:100vh;margin:auto;background:#fff;overflow:hidden;position:relative}
-  .screen{display:none;min-height:100vh;padding:24px 20px 95px}
-  .screen.active{display:block}
-  .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}
-  .logo{font-size:34px;font-weight:800;color:#075b45;letter-spacing:-1px}
-  .back{border:0;background:#f0f7f3;width:42px;height:42px;border-radius:50%;font-size:22px;color:#075b45}
-  .tag{font-size:16px;color:#66756f}
-  .hero{text-align:center;padding:25px 0 15px}
-  h1{font-size:27px;margin:10px 0;color:#123b30}
-  h2{font-size:22px;margin:8px 0 25px}
-  .card{background:#fff;border:1px solid #e5eee9;border-radius:22px;padding:18px;box-shadow:0 8px 25px rgba(10,80,55,.08);margin:14px 0}
-  .search{display:block;width:100%;border:2px solid #d9e5df;border-radius:16px;padding:16px;color:#18352d;font-size:16px;text-align:right;background:#fff;outline:none} .search::placeholder{color:#7b8782}.search:focus{border-color:#2ca56e}
-  .primary{width:100%;border:0;background:#086047;color:#fff;padding:16px;border-radius:16px;font-size:17px;font-weight:700;margin-top:14px}
-  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-  .choice{border:1px solid #dfeae5;background:#fff;border-radius:16px;padding:17px 10px;font-size:16px;cursor:pointer}
-  .choice.selected{background:#e6f5ed;border:2px solid #22a36a;color:#075b45;font-weight:700}
-  .progress{height:7px;background:#e7eee9;border-radius:10px;overflow:hidden;margin:10px 0 28px}
-  .progress i{display:block;height:100%;background:#1d9b66;width:33%}
-  .muted{color:#74827d;font-size:14px}
-  .result-title{font-size:18px;font-weight:700}
-  .product{border:1px solid #dbe9e2;border-radius:18px;padding:16px;margin:12px 0}
-  .product.best{border:2px solid #43ad79;background:#fbfffd}
-  .product-head{display:flex;gap:12px;align-items:center}
-  .pic{width:70px;height:70px;border-radius:14px;background:#edf4f1;display:flex;align-items:center;justify-content:center;font-size:38px}
-  .price{font-size:22px;font-weight:800;margin-top:8px}
-  .reason{background:#f0f8f4;border-radius:13px;padding:12px;margin-top:12px;font-size:14px;line-height:1.6}
-  .store{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #edf1ef;padding:14px 0}
-  .store:last-child{border-bottom:0}
-  .store button,.store-btn{border:1px solid #2ca56e;background:#fff;color:#08704e;border-radius:10px;padding:8px 12px;text-decoration:none;font-weight:700;font-size:14px}
-  .nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(100%,430px);height:76px;background:#fff;border-top:1px solid #e6eee9;display:flex;justify-content:space-around;align-items:center;box-shadow:0 -6px 20px rgba(0,0,0,.05)}
-  .nav span{font-size:13px;color:#63736c;text-align:center}.nav b{display:block;font-size:21px;margin-bottom:3px;color:#075b45}
-  .smallbtn{border:0;background:none;color:#08704e;font-weight:700;padding:8px}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f7faf8;color:#17231b}
+header{background:#14532d;color:#fff;padding:25px 18px;text-align:center}
+.logo{font-size:34px;font-weight:bold}
+.tag{margin-top:8px}
+main{max-width:650px;margin:auto;padding:20px}
+.card{background:#fff;border-radius:18px;padding:20px;margin-bottom:18px;box-shadow:0 4px 15px #0001}
+h2{margin-top:0}
+input{width:100%;padding:16px;border:1px solid #ddd;border-radius:12px;font-size:17px;margin:10px 0}
+button{border:0;border-radius:12px;padding:13px 18px;font-size:16px}
+.primary{background:#14532d;color:#fff;width:100%}
+.option{background:#eef5f0;margin:5px;color:#14532d}
+.hidden{display:none}
+.product{border:1px solid #e2e8e4;border-radius:15px;padding:16px;margin:12px 0}
+.product h3{margin:0 0 8px}
+.price{font-size:24px;font-weight:bold;color:#14532d}
+.small{color:#68736c;font-size:13px}
+.badge{display:inline-block;background:#dcfce7;color:#166534;padding:6px 9px;border-radius:20px;font-size:13px}
+a.buy{display:block;text-align:center;background:#14532d;color:#fff;text-decoration:none;padding:13px;border-radius:12px;margin-top:10px}
 </style>
-
-<meta name="theme-color" content="#28664f">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="دبّرها">
-<link rel="manifest" href="manifest.json">
 </head>
 <body>
-<div class="phone">
-  <section id="home" class="screen active">
-    <div class="top"><button class="back">☰</button><div class="logo">دبّرها ✓</div><button class="back">🔔</button></div>
-    <div class="hero">
-      <div class="tag">قرارك أسهل مع دبّرها</div>
-      <h1>وش تبي تشتري؟ ✨</h1>
-      <div class="card">
-        <input id="searchInput" class="search" type="text" placeholder="مثال: جوال بـ 2000 ريال، أهم شيء الكاميرا والبطارية" aria-label="وش تبي تشتري؟">
-        <button class="primary" onclick="startSearch()">دبّرها لي ✨</button>
-      </div>
-    </div>
-    <h2>تصفح بسرعة 🚀</h2>
-    <div class="grid">
-      <button class="choice" onclick="go('q1')">📱<br>جوالات</button>
-      <button class="choice" onclick="go('q1')">💻<br>لابتوبات</button>
-      <button class="choice" onclick="go('q1')">🎧<br>سماعات</button>
-      <button class="choice" onclick="go('q1')">📺<br>شاشات</button>
-    </div>
-    <div class="card">
-      <b>🔥 الأكثر بحثًا</b>
-      <p>أفضل جوال تحت 2000 ريال</p>
-      <p>أفضل لابتوب للدراسة والعمل</p>
-      <p>أفضل سماعة عزل ضوضاء</p>
-    </div>
-  </section>
 
-  <section id="q1" class="screen">
-    <div class="top"><button class="back" onclick="go('home')">→</button><b>وش يناسبك؟</b><span></span></div>
-    <div class="muted">الخطوة 1 من 3</div><div class="progress"><i style="width:33%"></i></div>
-    <h2>كم ميزانيتك؟</h2>
-    <div class="grid">
-      <button class="choice" onclick="select(this)">أقل من 1,000</button>
-      <button class="choice" onclick="select(this)">1,000 – 2,000</button>
-      <button class="choice" onclick="select(this)">2,000 – 3,000</button>
-      <button class="choice" onclick="select(this)">3,000 – 5,000</button>
-    </div>
-    <button class="primary" onclick="go('q2')">التالي ←</button>
-  </section>
+<header>
+<div class="logo">دبّرها</div>
+<div class="tag">قرارك أسهل مع دبّرها</div>
+</header>
 
-  <section id="q2" class="screen">
-    <div class="top"><button class="back" onclick="go('q1')">→</button><b>وش يناسبك؟</b><span></span></div>
-    <div class="muted">الخطوة 2 من 3</div><div class="progress"><i style="width:66%"></i></div>
-    <h2>وش راح تستخدمه فيه؟</h2>
-    <div class="grid">
-      <button class="choice" onclick="select(this)">🎓 دراسة</button>
-      <button class="choice" onclick="select(this)">💼 عمل</button>
-      <button class="choice" onclick="select(this)">🎮 ألعاب</button>
-      <button class="choice" onclick="select(this)">📸 تصوير</button>
-      <button class="choice" onclick="select(this)">🎬 مشاهدة</button>
-      <button class="choice" onclick="select(this)">🔥 استخدام يومي</button>
-    </div>
-    <button class="primary" onclick="go('q3')">التالي ←</button>
-  </section>
+<main>
 
-  <section id="q3" class="screen">
-    <div class="top"><button class="back" onclick="go('q2')">→</button><b>وش يناسبك؟</b><span></span></div>
-    <div class="muted">الخطوة 3 من 3</div><div class="progress"><i style="width:100%"></i></div>
-    <h2>وش أهم شيء عندك؟</h2>
-    <div class="grid">
-      <button class="choice" onclick="select(this)">📷 الكاميرا</button>
-      <button class="choice" onclick="select(this)">🔋 البطارية</button>
-      <button class="choice" onclick="select(this)">⚡ الأداء</button>
-      <button class="choice" onclick="select(this)">💰 السعر</button>
-      <button class="choice" onclick="select(this)">🖥️ الشاشة</button>
-      <button class="choice" onclick="select(this)">✨ لا يهمني</button>
-    </div>
-    <button class="primary" onclick="go('results')">دبّرها لي ✨</button>
-  </section>
-
-  <section id="results" class="screen">
-    <div class="top"><button class="back" onclick="go('q3')">→</button><b>اخترنا لك</b><span></span></div>
-    <p class="muted">الترتيب يتغير حسب ميزانيتك وأهم شيء عندك</p>
-    <div id="resultsList"></div>
-  </section>
-
-  <section id="compare" class="screen">
-    <div class="top"><button class="back" onclick="go('results')">→</button><b>مقارنة المتاجر</b><span></span></div>
-    <h2>أفضل الأسعار</h2><p class="muted">آخر تحقق: 4 سبتمبر 2026 — الأسعار قابلة للتغير.</p>
-    <div class="card">
-      <div class="store"><div><b>Amazon.sa</b><br><span class="muted">تحقق من السعر الحالي</span></div><a class="store-btn" href="https://www.amazon.sa/s?k=Samsung+Galaxy+A36+5G&tag=dubbarhe-21" target="_blank" rel="noopener noreferrer">اشترِ من أمازون</a></div>
-      <div class="store"><div><b>Noon</b><br><span class="muted">909 ريال (6GB/128GB)</span></div><a class="store-btn" href="https://supermall.noon.com/saudi-ar/galaxy-a36-5g-dual-sim-awesome-black-6gb-ram-128gb-middle-east-version/N70357593V/p/" target="_blank" rel="noopener noreferrer">اذهب للمتجر</a></div>
-      <div class="store"><div><b>معلومة السعر</b><br><span class="muted">الأسعار تتغير حسب الذاكرة والبائع</span></div></div>
-      <div class="reason">💰 <b>رابط شراكة:</b><br>إذا اشترى المستخدم عبر الرابط المؤهل، قد يحصل «دبّرها» على عمولة من أمازون، دون تكلفة إضافية على المستخدم.<br><span class="muted">بيانات الأسعار هنا تم التحقق منها من صفحات المتاجر، وقد تتغير حسب الوقت والبائع والذاكرة؛ تحقق من صفحة المتجر قبل الشراء.</span></div>
-    </div>
-    <button class="primary" onclick="go('home')">عودة للرئيسية</button>
-  </section>
+<div class="card" id="home">
+<h2>وش تبي تشتري؟</h2>
+<input id="searchInput" placeholder="مثال: جوال 1000 ريال">
+<button class="primary" id="startBtn">دبّرها لي</button>
 </div>
-<div class="nav"><span onclick="go('home')"><b>⌂</b>الرئيسية</span><span onclick="go('q1')"><b>⌕</b>دبّرها</span><span><b>♡</b>المحفوظة</span><span><b>♙</b>حسابي</span></div>
+
+<div class="card hidden" id="questions">
+<h2>وش أهم شيء عندك؟</h2>
+<button class="option" data-use="تصوير">التصوير 📷</button>
+<button class="option" data-use="بطارية">البطارية 🔋</button>
+<button class="option" data-use="أداء">الأداء ⚡</button>
+<button class="option" data-use="سعر">السعر 💰</button>
+</div>
+
+<div class="card hidden" id="results">
+<h2>أفضل الخيارات لك</h2>
+<div id="resultsList"></div>
+<button class="primary" id="backBtn">بحث جديد</button>
+</div>
+
+</main>
+
 <script>
 const products=[
- {name:'Samsung Galaxy A36 5G',price:1073,battery:5000,camera:50,performance:78,screen:90,rating:4.0},
- {name:'Samsung Galaxy A26 5G',price:999,battery:5000,camera:50,performance:72,screen:84,rating:4.4},
- {name:'Samsung Galaxy A17 4G',price:719,battery:5000,camera:50,performance:60,screen:78,rating:4.4}
+{
+name:"Samsung Galaxy A17 4G",
+price:719,
+rating:4.4,
+camera:7,
+battery:8,
+performance:6,
+value:10,
+amazon:"https://www.amazon.sa/s?k=Samsung+Galaxy+A17&tag=dubbarhe-21",
+noon:"https://www.noon.com/saudi-ar/"
+},
+{
+name:"Samsung Galaxy A26 5G",
+price:999,
+rating:4.4,
+camera:8,
+battery:8,
+performance:7,
+value:9,
+amazon:"https://www.amazon.sa/s?k=Samsung+Galaxy+A26&tag=dubbarhe-21",
+noon:"https://www.noon.com/saudi-ar/"
+},
+{
+name:"Samsung Galaxy A36 5G",
+price:1073,
+rating:4.0,
+camera:8,
+battery:9,
+performance:8,
+value:8,
+amazon:"https://www.amazon.sa/s?k=Samsung+Galaxy+A36&tag=dubbarhe-21",
+noon:"https://www.noon.com/saudi-ar/"
+}
 ];
-let prefs={budget:2000,use:'daily',priority:'price'};
-function go(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0)}
-function select(el){el.parentElement.querySelectorAll('.choice').forEach(x=>x.classList.remove('selected'));el.classList.add('selected');const t=el.textContent.trim(); if(t.includes('1,000')) prefs.budget=2000; else if(t.includes('أقل')) prefs.budget=1000; else if(t.includes('2,000')) prefs.budget=3000; else if(t.includes('3,000')) prefs.budget=5000; if(['🎓','💼','🎮','📸','🎬','🔥'].some(x=>t.startsWith(x))) prefs.use=t; if(t.includes('الكاميرا')) prefs.priority='camera'; else if(t.includes('البطارية')) prefs.priority='battery'; else if(t.includes('الأداء')) prefs.priority='performance'; else if(t.includes('السعر')) prefs.priority='price'; else if(t.includes('الشاشة')) prefs.priority='screen';}
-function startSearch(){const v=document.getElementById('searchInput').value.trim();if(!v){document.getElementById('searchInput').focus();return;}const m=v.match(/(\d[\d,]*)\s*ريال/); if(m)prefs.budget=parseInt(m[1].replace(/,/g,'')); if(/كاميرا/.test(v))prefs.priority='camera'; else if(/بطاري/.test(v))prefs.priority='battery'; else if(/أداء|ألعاب/.test(v))prefs.priority='performance'; else if(/شاشة/.test(v))prefs.priority='screen'; else if(/سعر|اقتصاد/.test(v))prefs.priority='price'; renderResults(); go('results');}
-function score(p){let s=0; const b=prefs.budget||2000; s+=Math.max(0,25-Math.abs(p.price-Math.min(b,p.price))/Math.max(b,1)*25); const weights={camera:40,battery:40,performance:40,price:40,screen:40}; s+=weights[prefs.priority]||25; if(prefs.priority==='camera')s+=p.camera*.8; if(prefs.priority==='battery')s+=p.battery/100; if(prefs.priority==='performance')s+=p.performance*.55; if(prefs.priority==='screen')s+=p.screen*.5; if(prefs.priority==='price')s+=(1000-p.price/2); s+=p.rating*5; return s;}
-function reason(p){const b=prefs.priority; if(b==='camera')return `مناسب لك لأن الكاميرا من أولوياتك: كاميرا رئيسية ${p.camera}MP، مع شاشة وبطارية قوية.`; if(b==='battery')return `مناسب لك لأن البطارية من أولوياتك: بطارية ${p.battery}mAh مع سعر ضمن الميزانية.`; if(b==='performance')return `مناسب لك لأن الأداء من أولوياتك: أداء ${p.performance}/100 مع دعم 5G في هذا الموديل.`; if(b==='screen')return `مناسب لك لأن الشاشة من أولوياتك: شاشة قوية للاستخدام اليومي والمشاهدة.`; return `أفضل قيمة مقابل السعر في ميزانيتك: ${p.price.toLocaleString('en-US')} ريال مع تقييم ${p.rating}/5.`;}
-function renderResults(){const ranked=[...products].filter(p=>p.price<=Math.max(prefs.budget||2000,800)).sort((a,b)=>score(b)-score(a));const box=document.getElementById('resultsList');box.innerHTML=ranked.map((p,i)=>`<div class="product ${i===0?'best':''}"><div class="product-head"><div class="pic">📱</div><div><div class="result-title">${i===0?'🥇':i===1?'🥈':'🥉'} ${p.name}</div><div class="muted">⭐ ${p.rating} من 5</div><div class="price">${p.price.toLocaleString('en-US')} ريال</div></div></div><div class="reason"><b>ليش اخترناه؟</b><br>${reason(p)}<br><span class="muted">الكاميرا ${p.camera}MP • البطارية ${p.battery}mAh • الأداء ${p.performance}/100</span></div>${i===0?'<button class="primary" onclick="go('compare')">التفاصيل والأسعار</button>':''}</div>`).join('');}
-renderResults();
-</script>
 
+let budget=0;
+let use="";
+
+function parseBudget(text){
+const match=text.replace(/,/g,"").match(/(\d{3,5})/);
+return match?Number(match[1]):1000;
+}
+
+function scoreProduct(p){
+let score=p.value*2;
+
+if(use==="تصوير") score+=p.camera*3;
+if(use==="بطارية") score+=p.battery*3;
+if(use==="أداء") score+=p.performance*3;
+if(use==="سعر") score+=p.value*3;
+
+return score;
+}
+
+function renderResults(){
+const list=document.getElementById("resultsList");
+
+let suitable=products.filter(p=>p.price<=budget);
+
+if(suitable.length===0){
+suitable=[...products].sort((a,b)=>a.price-b.price).slice(0,3);
+}
+
+suitable.sort((a,b)=>scoreProduct(b)-scoreProduct(a));
+
+list.innerHTML=suitable.slice(0,3).map((p,i)=>`
+<div class="product">
+${i===0?'<span class="badge">⭐ اختيار دبّرها</span>':""}
+<h3>${p.name}</h3>
+<div class="price">${p.price.toLocaleString("ar-SA")} ريال</div>
+<p>التقييم: ⭐ ${p.rating}</p>
+<p class="small">
+كاميرا ${p.camera}/10 · بطارية ${p.battery}/10 · أداء ${p.performance}/10
+</p>
+<a class="buy" href="${p.amazon}" target="_blank" rel="noopener">
+شوف السعر في Amazon
+</a>
+<a class="buy" href="${p.noon}" target="_blank" rel="noopener">
+شوف السعر في Noon
+</a>
+</div>
+`).join("");
+}
+
+document.getElementById("startBtn").addEventListener("click",()=>{
+const text=document.getElementById("searchInput").value.trim();
+
+if(!text){
+alert("اكتب وش تبي تشتري، مثال: جوال 1000 ريال");
+return;
+}
+
+budget=parseBudget(text);
+
+document.getElementById("home").classList.add("hidden");
+document.getElementById("questions").classList.remove("hidden");
+});
+
+document.querySelectorAll(".option").forEach(btn=>{
+btn.addEventListener("click",()=>{
+use=btn.dataset.use;
+
+document.getElementById("questions").classList.add("hidden");
+document.getElementById("results").classList.remove("hidden");
+
+renderResults();
+});
+});
+
+document.getElementById("backBtn").addEventListener("click",()=>{
+document.getElementById("results").classList.add("hidden");
+document.getElementById("home").classList.remove("hidden");
+});
+</script>
 
 </body>
 </html>
