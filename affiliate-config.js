@@ -8,7 +8,6 @@ window.DABBIRHA_AFFILIATE={
     url:'https://www.noon.com/saudi-ar/',
     links:{
       'Xiaomi Redmi Note 14':'https://s.noon.com/DlPsJs69Auk',
-      'Samsung Galaxy A17 4G':'https://s.noon.com/o7QQpIWMzbc',
       'Samsung Galaxy A26 5G':'https://s.noon.com/gKinfuKUgLw',
       'Samsung Galaxy A36 5G':'https://s.noon.com/tZ1olod7lHY',
       'Lenovo IdeaPad 1':'https://s.noon.com/ZjwADSOoJug',
@@ -26,6 +25,7 @@ window.DABBIRHA_AFFILIATE={
       'iPhone 16e':'https://s.noon.com/OwuVifEEtCU'
     },
     publicLinks:{
+      'Samsung Galaxy A17 4G':'https://www.noon.com/saudi-ar/galaxy-a17-dual-sim-4g-black-4gb-ram-128gb-middle-east-version/N70214276V/p/',
       'Samsung Galaxy A56 5G':'https://www.noon.com/saudi-ar/galaxy-a56-5g-dual-sim-awesome-graphite-8gb-ram-256gb-middle-east-version/N70158930V/p/'
     }
   },
