@@ -1,6 +1,6 @@
-// واجهة الذكاء في دبّرها: توصية + مقارنة ثلاثية + مقارنة سريعة + روابط إحالة منظمة
+// واجهة الذكاء في دبّرها: توصية + مقارنة + روابط المتاجر
 (function(){
-const labels={gaming:'ألعاب وأداء',camera:'تصوير',work:'عمل ودراسة',battery:'بطارية',cheap:'اقتصادي',premium:'جودة أعلى'};
+const labels={gaming:'ألعاب وأداء',camera:'تصوير',work:'عمل ودراسة',battery:'بطارية',cheap:'اقتصادي',premium:'جودة أعلى',value:'قيمة مقابل السعر'};
 const extra=[
 {name:'Samsung Galaxy S26 Ultra 5G 256GB',category:'phone',price:3939,rating:4.7,tags:'رائد كاميرا أداء 5G',useCases:'تصوير ألعاب أداء احترافي',priceSource:'نون'},
 {name:'Samsung Galaxy S25 Ultra 5G 256GB',category:'phone',price:3166,rating:4.7,tags:'رائد كاميرا أداء 5G',useCases:'تصوير ألعاب أداء احترافي',priceSource:'نون'},
@@ -15,6 +15,19 @@ const base=window.DABBIRHA_PRODUCTS||[];
 const products=base.concat(extra.filter(x=>!base.some(p=>p.name===x.name)));
 window.DABBIRHA_PRODUCTS=products;
 function fallback(){try{if(typeof render==='function'){render();return true}}catch(e){}return false}
+function storeLink(store,product){
+ const u=window.dabbarhaAffiliateUrl&&window.dabbarhaAffiliateUrl(store,product);
+ if(!u)return '<span class="store-disabled">'+(store==='noon'?'🛍️ نون قريبًا':'🛒 '+store+' قريبًا')+'</span>';
+ const tracked=window.dabbarhaIsAffiliateLink?window.dabbarhaIsAffiliateLink(store,product):false;
+ const key=encodeURIComponent(product);
+ const label=store==='amazon'?'🛒 أمازون':'🛍️ نون'+(tracked?'':' — فتح نون');
+ return '<a class="store-link" href="'+u+'" target="_blank" rel="noopener" data-store="'+store+'" data-product="'+key+'">'+label+'</a>';
+}
+function attachClicks(root){
+ root.querySelectorAll('.store-link').forEach(a=>a.addEventListener('click',function(){
+  if(window.dabbarhaIsAffiliateLink&&window.dabbarhaIsAffiliateLink(this.dataset.store,decodeURIComponent(this.dataset.product||''))&&window.dabbarhaAffiliateClick){window.dabbarhaAffiliateClick(this.dataset.store,decodeURIComponent(this.dataset.product||''));}
+ }));
+}
 function runSmart(){
  try{
   const input=document.getElementById('q');
@@ -23,25 +36,25 @@ function runSmart(){
   const result=DabbarhaSmart.recommend(products,raw,(typeof prefs!=='undefined'&&prefs.category)||null);
   const source=products.filter(p=>!((typeof prefs!=='undefined'&&prefs.category))||p.category===prefs.category).map(p=>({...p,_score:DabbarhaSmart.score(p,result.budget,result.intents||[])}));
   if(!source.length)return fallback();
-  source.sort((a,b)=>b._score-a._score);
-  const best=source[0];
-  const cheapest=source.slice().sort((a,b)=>a.price-b.price)[0];
+  source.sort((a,b)=>b._score-a._score||a.price-b.price);
+  const best=source[0],cheapest=source.slice().sort((a,b)=>a.price-b.price)[0];
   const valuePool=source.filter(p=>p.name!==cheapest.name);
   const value=(valuePool.length?valuePool:source).slice().sort((a,b)=>((b._score*100)/Math.max(1,b.price))-((a._score*100)/Math.max(1,a.price)))[0];
-  const chosen=[];[best,value,cheapest].forEach(p=>{if(p&&!chosen.some(x=>x.name===p.name))chosen.push(p)});source.slice(0,5).forEach(p=>{if(chosen.length<3&&!chosen.some(x=>x.name===p.name))chosen.push(p)});
+  const chosen=[];[best,value,cheapest].forEach(p=>{if(p&&!chosen.some(x=>x.name===p.name))chosen.push(p)});
+  source.slice(0,5).forEach(p=>{if(chosen.length<3&&!chosen.some(x=>x.name===p.name))chosen.push(p)});
   const top=chosen.slice(0,3),sv=typeof saved==='function'?saved():[],info=document.getElementById('info'),list=document.getElementById('list');
   if(!list||!top.length)return fallback();
   const budget=result.budget||((typeof prefs!=='undefined'&&prefs.budget)||2000);
   if(info)info.textContent='ميزانيتك: '+budget.toLocaleString()+' ريال • تحليل ذكي حسب الاستخدام والقيمة والتقييم';
   const summary='<div class="why"><b>🏆 الأفضل لك:</b> '+best.name+'<br><b>💰 الأفضل قيمة:</b> '+value.name+'<br><b>🪙 الأرخص:</b> '+cheapest.name+'</div>';
   const compare='<div class="why" style="margin:14px 0 16px"><b style="font-size:17px">⚖️ مقارنة سريعة</b><div style="overflow-x:auto;margin-top:9px"><table style="width:100%;border-collapse:collapse;font-size:13px;text-align:right"><tr><th style="padding:8px;border-bottom:1px solid #ddd">المنتج</th><th style="padding:8px;border-bottom:1px solid #ddd">السعر</th><th style="padding:8px;border-bottom:1px solid #ddd">التقييم</th><th style="padding:8px;border-bottom:1px solid #ddd">الملاءمة</th></tr>'+top.map(p=>'<tr><td style="padding:8px;border-bottom:1px solid #eee">'+p.name+'</td><td style="padding:8px;border-bottom:1px solid #eee">'+p.price.toLocaleString()+' ر.س</td><td style="padding:8px;border-bottom:1px solid #eee">⭐ '+p.rating+'</td><td style="padding:8px;border-bottom:1px solid #eee">'+p._score+'</td></tr>').join('')+'</table></div><div style="margin-top:8px">💡 الأرخص: '+cheapest.name+' • الأعلى ملاءمة: '+best.name+'</div></div>';
-  const affiliate=(store,product)=>{const u=window.dabbarhaAffiliateUrl&&window.dabbarhaAffiliateUrl(store,product);if(!u)return '<span style="flex:1;text-align:center;background:#f3f3f3;color:#888;padding:11px;border-radius:11px;font-weight:bold">'+(store==='noon'?'🛍️ نون قريبًا':store==='temu'?'🛒 Temu قريبًا':'متجر قريبًا')+'</span>';const tracked=window.dabbarhaIsAffiliateLink?window.dabbarhaIsAffiliateLink(store,product):false;const click=tracked?' onclick="dabbarhaAffiliateClick(\\''+store+'\\','+JSON.stringify(product)+')"':'';const label=store==='amazon'?'🛒 أمازون':('🛍️ '+((window.DABBIRHA_AFFILIATE[store]||{}).name||store)+(tracked?'':' — فتح نون'));return '<a href="'+u+'" target="_blank" rel="noopener"'+click+'>'+label+'</a>'};
   list.innerHTML=summary+compare+top.map(p=>{
    const role=p.name===best.name?'🏆 الأفضل لك':p.name===value.name?'💰 الأفضل قيمة':p.name===cheapest.name?'🪙 الأرخص':'⭐ خيار مناسب';
    const reason=result.intents.length?'طابقنا طلبك مع: '+result.intents.map(x=>labels[x]||x).join('، '):'اخترناه حسب السعر والتقييم والملاءمة';
    const sourceNote=p.priceSource?' • سعر مرصود من '+p.priceSource:' • سعر استرشادي';
-   return '<div class="product"><button class="save" onclick="save('+JSON.stringify(p.name)+')">'+(sv.includes(p.name)?'❤️':'♡')+'</button><span class="tag">'+role+'</span><h3>'+p.name+'</h3><div class="price">'+p.price.toLocaleString()+' ريال</div><div class="meta">⭐ '+p.rating+' • درجة الملاءمة '+p._score+sourceNote+'</div><div class="why">'+reason+(p.price<=budget?' • ضمن الميزانية':' • أعلى من الميزانية')+'</div><div class="stores">'+affiliate('amazon',p.name)+affiliate('noon',p.name)+'</div></div>'
+   return '<div class="product"><button class="save" onclick="save('+JSON.stringify(p.name)+')">'+(sv.includes(p.name)?'❤️':'♡')+'</button><span class="tag">'+role+'</span><h3>'+p.name+'</h3><div class="price">'+p.price.toLocaleString()+' ريال</div><div class="meta">⭐ '+p.rating+' • درجة الملاءمة '+p._score+sourceNote+'</div><div class="why">'+reason+(p.price<=budget?' • ضمن الميزانية':' • أعلى من الميزانية')+'</div><div class="stores">'+storeLink('amazon',p.name)+storeLink('noon',p.name)+'</div></div>';
   }).join('');
+  attachClicks(list);
   return true;
  }catch(e){return fallback()}
 }
