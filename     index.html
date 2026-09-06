@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>دبّرها</title>
+
+<style>
+
+*{box-sizing:border-box}
+
+body{
+
+margin:0;
+
+font-family:Arial,sans-serif;
+
+background:#f5f7f6;
+
+color:#17231d;
+
+}
+
+header{
+
+background:#087f5b;
+
+color:white;
+
+padding:20px;
+
+text-align:center;
+
+border-radius:0 0 24px 24px;
+
+}
+
+header h1{margin:0;font-size:28px}
+
+header p{margin:8px 0 0}
+
+main{padding:20px;max-width:700px;margin:auto}
+
+.card{
+
+background:white;
+
+padding:18px;
+
+border-radius:18px;
+
+margin-bottom:15px;
+
+box-shadow:0 2px 10px #00000010;
+
+}
+
+input{
+
+width:100%;
+
+padding:16px;
+
+border:1px solid #ddd;
+
+border-radius:14px;
+
+font-size:16px;
+
+margin:12px 0;
+
+}
+
+button{
+
+border:0;
+
+border-radius:14px;
+
+padding:14px 18px;
+
+font-size:16px;
+
+cursor:pointer;
+
+}
+
+.primary{
+
+width:100%;
+
+background:#087f5b;
+
+color:white;
+
+font-weight:bold;
+
+}
+
+.categories{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:10px;
+
+margin-top:15px;
+
+}
+
+.cat{
+
+background:#e9f7f2;
+
+color:#087f5b;
+
+font-weight:bold;
+
+}
+
+.product{
+
+border:1px solid #eee;
+
+border-radius:16px;
+
+padding:16px;
+
+margin:12px 0;
+
+background:white;
+
+}
+
+.product h3{margin:0 0 8px}
+
+.price{
+
+font-size:22px;
+
+font-weight:bold;
+
+color:#087f5b;
+
+}
+
+.reason{
+
+color:#666;
+
+font-size:14px;
+
+margin-top:8px;
+
+}
+
+nav{
+
+position:fixed;
+
+bottom:0;
+
+left:0;
+
+right:0;
+
+background:white;
+
+display:flex;
+
+justify-content:space-around;
+
+padding:12px 5px;
+
+border-top:1px solid #ddd;
+
+}
+
+nav button{
+
+background:white;
+
+font-size:13px;
+
+}
+
+.hidden{display:none}
+
+.back{
+
+background:#eee;
+
+margin-bottom:10px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>دبّرها ✨</h1>
+
+<p>نساعدك تختار الشيء المناسب لميزانيتك</p>
+
+</header>
+
+<main>
+
+<section id="home">
+
+<div class="card">
+
+<h2>وش تبي تشتري؟ ✨</h2>
+
+<p>اكتب طلبك وميزانيتك</p>
+
+<input id="searchInput"
+
+placeholder="مثال: جوال بـ 2000 ريال">
+
+<button class="primary" onclick="startSearch()">
+
+دبّرها ✨
+
+</button>
+
+<div class="categories">
+
+<button class="cat" onclick="quickSearch('لابتوب 3000')">💻 لابتوبات</button>
+
+<button class="cat" onclick="quickSearch('جوال 2000')">📱 جوالات</button>
+
+<button class="cat" onclick="quickSearch('شاشة 1500')">🖥️ شاشات</button>
+
+<button class="cat" onclick="quickSearch('سماعات 500')">🎧 سماعات</button>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="results" class="hidden">
+
+<button class="back" onclick="go('home')">← رجوع</button>
+
+<div class="card">
+
+<h2>اخترنا لك</h2>
+
+<p id="searchInfo"></p>
+
+<div id="resultsList"></div>
+
+</div>
+
+</section>
+
+<section id="saved" class="hidden">
+
+<div class="card">
+
+<h2>المحفوظة ❤️</h2>
+
+<p>ستظهر المنتجات المحفوظة هنا.</p>
+
+</div>
+
+</section>
+
+<section id="account" class="hidden">
+
+<div class="card">
+
+<h2>حسابي 👤</h2>
+
+<p>مرحبًا بك في دبّرها.</p>
+
+</div>
+
+</section>
+
+</main>
+
+<nav>
+
+<button onclick="go('account')">👤<br>حسابي</button>
+
+<button onclick="go('saved')">❤️<br>المحفوظة</button>
+
+<button onclick="go('home')">✨<br>دبّرها</button>
+
+<button onclick="go('home')">🏠<br>الرئيسية</button>
+
+</nav>
+
+<script>
+
+const products = [
+
+/* جوالات */
+
+{
+
+name:'Samsung Galaxy A17 4G',
+
+category:'phone',
+
+price:719,
+
+battery:5000,
+
+camera:50,
+
+performance:60,
+
+screen:78,
+
+rating:4.4
+
+},
+
+{
+
+name:'Samsung Galaxy A26 5G',
+
+category:'phone',
+
+price:999,
+
+battery:5000,
+
+camera:50,
+
+performance:72,
+
+screen:84,
+
+rating:4.4
+
+},
+
+{
+
+name:'Samsung Galaxy A36 5G',
+
+category:'phone',
+
+price:1073,
+
+battery:5000,
+
+camera:50,
+
+performance:78,
+
+screen:90,
+
+rating:4.0
+
+},
+
+/* لابتوبات */
+
+{
+
+name:'Lenovo IdeaPad 1',
+
+category:'laptop',
+
+price:1899,
+
+battery:8,
+
+camera:5,
+
+performance:65,
+
+screen:75,
+
+rating:4.3
+
+},
+
+{
+
+name:'HP 15',
+
+category:'laptop',
+
+price:2299,
+
+battery:8,
+
+camera:5,
+
+performance:72,
+
+screen:78,
+
+rating:4.4
+
+},
+
+{
+
+name:'Lenovo IdeaPad Slim 3',
+
+category:'laptop',
+
+price:2799,
+
+battery:9,
+
+camera:5,
+
+performance:82,
+
+screen:82,
+
+rating:4.5
+
+},
+
+{
+
+name:'ASUS Vivobook 15',
+
+category:'laptop',
+
+price:2999,
+
+battery:9,
+
+camera:5,
+
+performance:85,
+
+screen:84,
+
+rating:4.5
+
+},
+
+/* شاشات */
+
+{
+
+name:'Samsung شاشة 24 بوصة',
+
+category:'screen',
+
+price:449,
+
+battery:0,
+
+camera:0,
+
+performance:65,
+
+screen:80,
+
+rating:4.2
+
+},
+
+{
+
+name:'LG شاشة 27 بوصة',
+
+category:'screen',
+
+price:799,
+
+battery:0,
+
+camera:0,
+
+performance:75,
+
+screen:88,
+
+rating:4.5
+
+},
+
+{
+
+name:'Samsung شاشة 32 بوصة',
+
+category:'screen',
+
+price:1199,
+
+battery:0,
+
+camera:0,
+
+performance:82,
+
+screen:92,
+
+rating:4.5
+
+},
+
+{
+
+name:'LG UltraGear 27',
+
+category:'screen',
+
+price:1499,
+
+battery:0,
+
+camera:0,
+
+performance:95,
+
+screen:94,
+
+rating:4.6
+
+},
+
+/* سماعات */
+
+{
+
+name:'Samsung Galaxy Buds FE',
+
+category:'headphones',
+
+price:299,
+
+battery:30,
+
+camera:0,
+
+performance:75,
+
+screen:0,
+
+rating:4.4
+
+},
+
+{
+
+name:'Anker Soundcore',
+
+category:'headphones',
+
+price:399,
+
+battery:40,
+
+camera:0,
+
+performance:80,
+
+screen:0,
+
+rating:4.5
+
+},
+
+{
+
+name:'Sony WH-CH520',
+
+category:'headphones',
+
+price:449,
+
+battery:50,
+
+camera:0,
+
+performance:85,
+
+screen:0,
+
+rating:4.6
+
+},
+
+{
+
+name:'Sony WH-1000XM5',
+
+category:'headphones',
+
+price:1299,
+
+battery:40,
+
+camera:0,
+
+performance:95,
+
+screen:0,
+
+rating:4.7
+
+}
+
+];
+
+let prefs={
+
+budget:2000,
+
+category:null,
+
+priority:'price'
+
+};
+
+function normalizeArabicNumbers(text){
+
+const arabic='٠١٢٣٤٥٦٧٨٩';
+
+const english='0123456789';
+
+return text.replace(/[٠-٩]/g,function(d){
+
+return english[arabic.indexOf(d)];
+
+});
+
+}
+
+function detectCategory(text){
+
+text=text.toLowerCase();
+
+if(
+
+/لابتوب|لابتوبات|لاب توب|حاسب محمول|كمبيوتر محمول/.test(text)
+
+)return 'laptop';
+
+if(
+
+/جوال|جوالات|هاتف|هواتف|موبايل|موبايلات/.test(text)
+
+)return 'phone';
+
+if(
+
+/سماعة|سماعات|هيدفون|headphone|سماعات أذن/.test(text)
+
+)return 'headphones';
+
+if(
+
+/شاشة|شاشات|تلفزيون|تلفزيونات|tv/.test(text)
+
+)return 'screen';
+
+return null;
+
+}
+
+function detectPriority(text){
+
+if(/كاميرا|تصوير/.test(text))
+
+return 'camera';
+
+if(/بطاري|بطارية/.test(text))
+
+return 'battery';
+
+if(/أداء|ألعاب|العاب|قوي/.test(text))
+
+return 'performance';
+
+if(/شاشة|وضوح|دقة/.test(text))
+
+return 'screen';
+
+return 'price';
+
+}
+
+function startSearch(){
+
+let value=document.getElementById('searchInput').value.trim();
+
+if(!value){
+
+alert('اكتب الشيء الذي تريد شراءه أولاً');
+
+return;
+
+}
+
+value=normalizeArabicNumbers(value);
+
+let numbers=value.match(/\d[\d,]*/g);
+
+if(numbers && numbers.length){
+
+let nums=numbers.map(function(n){
+
+return parseInt(n.replace(/,/g,''));
+
+});
+
+let budget=nums[nums.length-1];
+
+if(budget>0){
+
+prefs.budget=budget;
+
+}
+
+}
+
+let category=detectCategory(value);
+
+prefs.category=category;
+
+prefs.priority=detectPriority(value);
+
+renderResults();
+
+go('results');
+
+}
+
+function quickSearch(text){
+
+document.getElementById('searchInput').value=text;
+
+startSearch();
+
+}
+
+function score(p){
+
+let s=0;
+
+if(p.price<=prefs.budget){
+
+s+=40;
+
+}else{
+
+s-=Math.min(50,(p.price-prefs.budget)/20);
+
+}
+
+if(prefs.priority==='camera'){
+
+s+=p.camera;
+
+}
+
+if(prefs.priority==='battery'){
+
+s+=p.battery/50;
+
+}
+
+if(prefs.priority==='performance'){
+
+s+=p.performance;
+
+}
+
+if(prefs.priority==='screen'){
+
+s+=p.screen;
+
+}
+
+if(prefs.priority==='price'){
+
+s+=(1000/Math.max(p.price,1))*30;
+
+}
+
+s+=p.rating*5;
+
+return s;
+
+}
+
+function reason(p){
+
+if(p.price<=prefs.budget){
+
+return 'ضمن ميزانيتك ومناسب للاختيار.';
+
+}
+
+return 'أعلى قليلًا من ميزانيتك، لكنه خيار إضافي للمقارنة.';
+
+}
+
+function renderResults(){
+
+let list=products.slice();
+
+if(prefs.category){
+
+list=list.filter(function(p){
+
+return p.category===prefs.category;
+
+});
+
+}
+
+list=list
+
+.filter(function(p){
+
+return p.price<=Math.max(prefs.budget,300);
+
+})
+
+.sort(function(a,b){
+
+return score(b)-score(a);
+
+});
+
+let box=document.getElementById('resultsList');
+
+document.getElementById('searchInfo').textContent=
+
+'الميزانية: '+prefs.budget.toLocaleString()+' ريال';
+
+if(!list.length){
+
+box.innerHTML=
+
+'<div class="product"><h3>لم نجد منتجًا مناسبًا</h3><p>جرّب رفع الميزانية قليلًا.</p></div>';
+
+return;
+
+}
+
+box.innerHTML=list.map(function(p){
+
+let amazon='https://www.amazon.sa/s?k='+encodeURIComponent(p.name)+'&tag=dabbirha-21';
+let noon='https://www.noon.com/saudi-en/search?q='+encodeURIComponent(p.name);
+
+return `
+
+<div class="product">
+
+<h3>${p.name}</h3>
+
+<div class="price">${p.price.toLocaleString()} ريال</div>
+
+<div class="reason">${reason(p)}</div>
+
+<div class="reason">⭐ ${p.rating}</div>
+
+<div style="display:flex;gap:8px;margin-top:12px;">
+
+<a href="${amazon}" target="_blank" rel="noopener"
+style="flex:1;text-align:center;background:#eee;padding:12px;border-radius:12px;text-decoration:none;color:#111;font-weight:bold;">
+🛒 أمازون
+</a>
+
+<a href="${noon}" target="_blank" rel="noopener"
+style="flex:1;text-align:center;background:#eee;padding:12px;border-radius:12px;text-decoration:none;color:#111;font-weight:bold;">
+🛍️ نون
+</a>
+
+</div>
+
+</div>
+
+`;
+
+}).join('');
+
+}
+
+function go(id){
+
+document.getElementById('home').classList.add('hidden');
+
+document.getElementById('results').classList.add('hidden');
+
+document.getElementById('saved').classList.add('hidden');
+
+document.getElementById('account').classList.add('hidden');
+
+document.getElementById(id).classList.remove('hidden');
+
+}
+
+renderResults();
+
+</script>
+
+</body>
+
+</html>
