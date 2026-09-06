@@ -30,7 +30,7 @@ window.DABBIRHA_AFFILIATE={
       'Samsung Galaxy S26 256GB':'https://supermall.noon.com/saudi-ar/electronics-and-mobiles/mobiles-and-accessories/noon-rocket/samsung/?f%5Bmobile_ram_size%5D%5B%5D=12gb_more&f%5Bmobile_ram_size%5D%5B%5D=8_gb&isCarouselView=false&limit=50&sort%5Bby%5D=popularity&sort%5Bdir%5D=desc',
       'Samsung Galaxy S26 Ultra 256GB':'https://supermall.noon.com/saudi-en/galaxy-s26-ultra-dual-sim-black-12gb-ram-256gb-5g-middle-east-version/N70283855V/p/',
       'Samsung Galaxy S26 Ultra 5G 256GB':'https://supermall.noon.com/saudi-en/galaxy-s26-ultra-dual-sim-black-12gb-ram-256gb-5g-middle-east-version/N70283855V/p/',
-      'Samsung Galaxy S25 Ultra 256GB':'https://supermall.noon.com/saudi-ar/galaxy-s25-ultra-ai-dual-sim-titanium-grey-12gb-ram-256gb-5g-middle-east-version/N70140492V/p/',
+      'Samsung Galaxy S25 Ultra 256GB':'https://supermall.noon.com/saudi-ar/galaxy-s25-ultra-ai-dual-sim-titanium-grey-12gb-ram-256gb-middle-east-version/N70140492V/p/',
       'Samsung Galaxy S25 Ultra 5G 256GB':'https://supermall.noon.com/saudi-ar/galaxy-s25-ultra-ai-dual-sim-titanium-grey-12gb-ram-256gb-5g-middle-east-version/N70140492V/p/',
       'Samsung Galaxy A57 5G 256GB':'https://supermall.noon.com/saudi-ar/galaxy-a57-dual-sim-awesome-gray-8gb-ram-256gb-5g-middle-east-version/N70320368V/p/',
       'Samsung Galaxy A57 5G 8GB 256GB':'https://supermall.noon.com/saudi-ar/galaxy-a57-dual-sim-awesome-gray-8gb-ram-256gb-5g-middle-east-version/N70320368V/p/',
@@ -48,6 +48,11 @@ window.dabbarhaAffiliateClick=function(store,product){
     const data=JSON.parse(localStorage.getItem(key)||'{}');
     data[store]=(data[store]||0)+1;
     localStorage.setItem(key,JSON.stringify(data));
+    const pk='dab_affiliate_product_clicks';
+    const products=JSON.parse(localStorage.getItem(pk)||'{}');
+    const productKey=store+'|'+(product||'منتج غير محدد');
+    products[productKey]=(products[productKey]||0)+1;
+    localStorage.setItem(pk,JSON.stringify(products));
     localStorage.setItem('dab_last_affiliate',JSON.stringify({store,product:product||'',at:Date.now()}));
   }catch(e){}
 };
