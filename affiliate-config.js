@@ -11,7 +11,6 @@ window.DABBIRHA_AFFILIATE={
       'Samsung Galaxy A17 4G':'https://s.noon.com/o7QQpIWMzbc',
       'Samsung Galaxy A26 5G':'https://s.noon.com/gKinfuKUgLw',
       'Samsung Galaxy A36 5G':'https://s.noon.com/tZ1olod7lHY',
-      'Samsung Galaxy A56 5G':'https://s.noon.com/PLACEHOLDER_OFFICIAL_AFFILIATE_LINK',
       'Lenovo IdeaPad 1':'https://s.noon.com/ZjwADSOoJug',
       'HP 15':'https://s.noon.com/73u7Y2_YbvQ',
       'Lenovo IdeaPad Slim 3':'https://s.noon.com/xgMdRw0Umy8',
@@ -47,16 +46,12 @@ window.dabbarhaAffiliateUrl=function(store,product){
   const a=window.DABBIRHA_AFFILIATE&&window.DABBIRHA_AFFILIATE[store];
   if(!a||!a.enabled)return null;
   if(store==='amazon')return a.search+encodeURIComponent(product||'');
-  if(store==='noon'){
-    const affiliate=a.links&&a.links[product];
-    if(affiliate&&!affiliate.includes('PLACEHOLDER_'))return affiliate;
-    return a.publicLinks&&a.publicLinks[product]||null;
-  }
+  if(store==='noon')return (a.links&&a.links[product])||(a.publicLinks&&a.publicLinks[product])||null);
   return a.url||null;
 };
 window.dabbarhaIsAffiliateLink=function(store,product){
   const a=window.DABBIRHA_AFFILIATE&&window.DABBIRHA_AFFILIATE[store];
   if(!a||!a.enabled)return false;
   if(store==='amazon')return true;
-  return !!(a.links&&a.links[product]&&!a.links[product].includes('PLACEHOLDER_'));
+  return !!(a.links&&a.links[product]);
 };
