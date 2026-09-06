@@ -1,0 +1,8 @@
+// محرك دبّرها الذكي: يفهم الميزانية والاستخدام ويحسب درجة ملاءمة المنتج.
+const DabbarhaSmart={
+ normalize(t){const a='٠١٢٣٤٥٦٧٨٩',e='0123456789';return String(t||'').replace(/[٠-٩]/g,d=>e[a.indexOf(d)]).toLowerCase()},
+ budget(t){const n=this.normalize(t).match(/\d[\d,]*/g);return n?parseInt(n[n.length-1].replace(/,/g,''),10):null},
+ intent(t){const s=this.normalize(t), rules={gaming:/العاب|ألعاب|قيمنق|بلايستيشن|xbox|أداء|ألعاب/,camera:/تصوير|كاميرا|صور|فيديو/,work:/عمل|دوام|دراسة|جامعة|دراسه|اوفيس|برمجة|برمجه/,battery:/بطارية|بطاريه|بطارية قوية|استخدام طويل/,cheap:/رخيص|اقتصادي|أوفر|اوفر|أقل سعر/,premium:/أفضل|افضل|فخم|قوي|احترافي/};return Object.keys(rules).filter(k=>rules[k].test(s))},
+ score(p,budget,intents){let score=p.rating*10; if(budget!=null){const gap=Math.abs(p.price-budget);score+=p.price<=budget?35:Math.max(0,15-gap/budget*15)} const text=(p.name+' '+(p.tags||'')).toLowerCase(); if(intents.includes('gaming')&&/gaming|playstation|xbox|performance|ألعاب|سماعة ألعاب/.test(text))score+=25;if(intents.includes('camera')&&/camera|كاميرا|تصوير|zv|eos/.test(text))score+=25;if(intents.includes('work')&&/laptop|ipad|tab|لابتوب|تابلت|حاسب/.test(text))score+=20;if(intents.includes('battery')&&/battery|بطارية/.test(text))score+=20;if(intents.includes('cheap'))score+=(p.price<=budget?20:0);if(intents.includes('premium'))score+=p.rating*2;return Math.round(score*10)/10},
+ recommend(products,query,category){const b=this.budget(query),i=this.intent(query);let list=products.filter(p=>!category||p.category===category).map(p=>({...p,_score:this.score(p,b,i)}));list.sort((a,z)=>z._score-a._score);return {budget:b,intents:i,items:list.slice(0,3)}}
+};
