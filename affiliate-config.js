@@ -7,65 +7,14 @@ window.DABBIRHA_AFFILIATE={
     name:'نون',
     url:'https://www.noon.com/saudi-ar/',
     links:{
-      'Xiaomi Redmi Note 14':'https://s.noon.com/DlPsJs69Auk',
-      'Samsung Galaxy A26 5G':'https://s.noon.com/gKinfuKUgLw',
-      'Samsung Galaxy A36 5G':'https://s.noon.com/tZ1olod7lHY',
-      'Lenovo IdeaPad 1':'https://s.noon.com/ZjwADSOoJug',
-      'HP 15':'https://s.noon.com/73u7Y2_YbvQ',
-      'Lenovo IdeaPad Slim 3':'https://s.noon.com/xgMdRw0Umy8',
-      'ASUS Vivobook 15':'https://s.noon.com/ic0Knt8DuvU',
-      'Samsung 24 بوصة':'https://s.noon.com/p2tQALN_VBY',
-      'Samsung 32 بوصة':'https://s.noon.com/l2Cyl2RkQdw',
-      'LG UltraGear 27':'https://s.noon.com/CaueD21c6qI',
-      'Samsung Galaxy Buds FE':'https://s.noon.com/QCoC6_-cr28',
-      'Anker Soundcore':'https://s.noon.com/lt1Vb4jtZZQ',
-      'Sony WH-CH520':'https://s.noon.com/g8XqKRSX684',
-      'Sony WH-1000XM5':'https://s.noon.com/8dlC8stL1e8',
-      'HONOR 400 5G':'https://s.noon.com/WUAWZioMfTo',
-      'iPhone 16e':'https://s.noon.com/OwuVifEEtCU'
+      'Xiaomi Redmi Note 14':'https://s.noon.com/DlPsJs69Auk','Samsung Galaxy A26 5G':'https://s.noon.com/gKinfuKUgLw','Samsung Galaxy A36 5G':'https://s.noon.com/tZ1olod7lHY','Lenovo IdeaPad 1':'https://s.noon.com/ZjwADSOoJug','HP 15':'https://s.noon.com/73u7Y2_YbvQ','Lenovo IdeaPad Slim 3':'https://s.noon.com/xgMdRw0Umy8','ASUS Vivobook 15':'https://s.noon.com/ic0Knt8DuvU','Samsung 24 بوصة':'https://s.noon.com/p2tQALN_VBY','Samsung 32 بوصة':'https://s.noon.com/l2Cyl2RkQdw','LG UltraGear 27':'https://s.noon.com/CaueD21c6qI','Samsung Galaxy Buds FE':'https://s.noon.com/QCoC6_-cr28','Anker Soundcore':'https://s.noon.com/lt1Vb4jtZZQ','Sony WH-CH520':'https://s.noon.com/g8XqKRSX684','Sony WH-1000XM5':'https://s.noon.com/8dlC8stL1e8','HONOR 400 5G':'https://s.noon.com/WUAWZioMfTo','iPhone 16e':'https://s.noon.com/OwuVifEEtCU'
     },
     publicLinks:{
-      'Samsung Galaxy A17 4G':'https://www.noon.com/saudi-ar/galaxy-a17-dual-sim-4g-black-4gb-ram-128gb-middle-east-version/N70214276V/p/',
-      'Samsung Galaxy A56 5G':'https://www.noon.com/saudi-ar/galaxy-a56-5g-dual-sim-awesome-graphite-8gb-ram-256gb-middle-east-version/N70158930V/p/',
-      'Samsung Galaxy S26 256GB':'https://supermall.noon.com/saudi-ar/electronics-and-mobiles/mobiles-and-accessories/noon-rocket/samsung/?f%5Bmobile_ram_size%5D%5B%5D=12gb_more&f%5Bmobile_ram_size%5D%5B%5D=8_gb&isCarouselView=false&limit=50&sort%5Bby%5D=popularity&sort%5Bdir%5D=desc',
-      'Samsung Galaxy S26 Ultra 256GB':'https://supermall.noon.com/saudi-en/galaxy-s26-ultra-dual-sim-black-12gb-ram-256gb-5g-middle-east-version/N70283855V/p/',
-      'Samsung Galaxy S26 Ultra 5G 256GB':'https://supermall.noon.com/saudi-en/galaxy-s26-ultra-dual-sim-black-12gb-ram-256gb-5g-middle-east-version/N70283855V/p/',
-      'Samsung Galaxy S25 Ultra 256GB':'https://supermall.noon.com/saudi-ar/galaxy-s25-ultra-ai-dual-sim-titanium-grey-12gb-ram-256gb-middle-east-version/N70140492V/p/',
-      'Samsung Galaxy S25 Ultra 5G 256GB':'https://supermall.noon.com/saudi-ar/galaxy-s25-ultra-ai-dual-sim-titanium-grey-12gb-ram-256gb-5g-middle-east-version/N70140492V/p/',
-      'Samsung Galaxy A57 5G 256GB':'https://supermall.noon.com/saudi-ar/galaxy-a57-dual-sim-awesome-gray-8gb-ram-256gb-5g-middle-east-version/N70320368V/p/',
-      'Samsung Galaxy A57 5G 8GB 256GB':'https://supermall.noon.com/saudi-ar/galaxy-a57-dual-sim-awesome-gray-8gb-ram-256gb-5g-middle-east-version/N70320368V/p/',
-      'Samsung Galaxy Tab A11 64GB':'https://supermall.noon.com/saudi-ar/electronics-and-mobiles/digital_home/samsung/?isCarouselView=false&limit=50&sort%5Bby%5D=popularity&sort%5Bdir%5D=desc',
-      'Samsung 45W USB-C Charger':'https://supermall.noon.com/saudi-ar/electronics-and-mobiles/digital_home/samsung/?isCarouselView=false&limit=50&sort%5Bby%5D=popularity&sort%5Bdir%5D=desc'
+      'Samsung Galaxy A17 4G':'https://www.noon.com/saudi-ar/galaxy-a17-dual-sim-4g-black-4gb-ram-128gb-middle-east-version/N70214276V/p/','Samsung Galaxy A56 5G':'https://www.noon.com/saudi-ar/galaxy-a56-5g-dual-sim-awesome-graphite-8gb-ram-256gb-middle-east-version/N70158930V/p/','Samsung Galaxy S26 256GB':'https://supermall.noon.com/saudi-ar/electronics-and-mobiles/mobiles-and-accessories/noon-rocket/samsung/?f%5Bmobile_ram_size%5D%5B%5D=12gb_more&f%5Bmobile_ram_size%5D%5B%5D=8_gb&isCarouselView=false&limit=50&sort%5Bby%5D=popularity&sort%5Bdir%5D=desc','Samsung Galaxy S26 Ultra 256GB':'https://supermall.noon.com/saudi-en/galaxy-s26-ultra-dual-sim-black-12gb-ram-256gb-5g-middle-east-version/N70283855V/p/','Samsung Galaxy S26 Ultra 5G 256GB':'https://supermall.noon.com/saudi-en/galaxy-s26-ultra-dual-sim-black-12gb-ram-256gb-5g-middle-east-version/N70283855V/p/','Samsung Galaxy S25 Ultra 256GB':'https://supermall.noon.com/saudi-ar/galaxy-s25-ultra-ai-dual-sim-titanium-grey-12gb-ram-256gb-middle-east-version/N70140492V/p/','Samsung Galaxy S25 Ultra 5G 256GB':'https://supermall.noon.com/saudi-ar/galaxy-s25-ultra-ai-dual-sim-titanium-grey-12gb-ram-256gb-5g-middle-east-version/N70140492V/p/','Samsung Galaxy A57 5G 256GB':'https://supermall.noon.com/saudi-ar/galaxy-a57-dual-sim-awesome-gray-8gb-ram-256gb-5g-middle-east-version/N70320368V/p/','Samsung Galaxy A57 5G 8GB 256GB':'https://supermall.noon.com/saudi-ar/galaxy-a57-dual-sim-awesome-gray-8gb-ram-256gb-5g-middle-east-version/N70320368V/p/','Samsung Galaxy Tab A11 64GB':'https://supermall.noon.com/saudi-ar/electronics-and-mobiles/digital_home/samsung/?isCarouselView=false&limit=50&sort%5Bby%5D=popularity&sort%5Bdir%5D=desc','Samsung 45W USB-C Charger':'https://supermall.noon.com/saudi-ar/electronics-and-mobiles/digital_home/samsung/?isCarouselView=false&limit=50&sort%5Bby%5D=popularity&sort%5Bdir%5D=desc'
     }
   },
-  temu:{enabled:false,name:'Temu',url:'https://www.temu.com/'},
-  shein:{enabled:false,name:'SHEIN',url:'https://ar.shein.com/'},
-  aliexpress:{enabled:false,name:'AliExpress',url:'https://www.aliexpress.com/'}
+  temu:{enabled:false,name:'Temu',url:'https://www.temu.com/'},shein:{enabled:false,name:'SHEIN',url:'https://ar.shein.com/'},aliexpress:{enabled:false,name:'AliExpress',url:'https://www.aliexpress.com/'}
 };
-window.dabbarhaAffiliateClick=function(store,product){
-  try{
-    const key='dab_affiliate_clicks';
-    const data=JSON.parse(localStorage.getItem(key)||'{}');
-    data[store]=(data[store]||0)+1;
-    localStorage.setItem(key,JSON.stringify(data));
-    const pk='dab_affiliate_product_clicks';
-    const products=JSON.parse(localStorage.getItem(pk)||'{}');
-    const productKey=store+'|'+(product||'منتج غير محدد');
-    products[productKey]=(products[productKey]||0)+1;
-    localStorage.setItem(pk,JSON.stringify(products));
-    localStorage.setItem('dab_last_affiliate',JSON.stringify({store,product:product||'',at:Date.now()}));
-  }catch(e){}
-};
-window.dabbarhaAffiliateUrl=function(store,product){
-  const a=window.DABBIRHA_AFFILIATE&&window.DABBIRHA_AFFILIATE[store];
-  if(!a||!a.enabled)return null;
-  if(store==='amazon')return a.search+encodeURIComponent(product||'');
-  if(store==='noon')return (a.links&&a.links[product])||(a.publicLinks&&a.publicLinks[product])||null;
-  return a.url||null;
-};
-window.dabbarhaIsAffiliateLink=function(store,product){
-  const a=window.DABBIRHA_AFFILIATE&&window.DABBIRHA_AFFILIATE[store];
-  if(!a||!a.enabled)return false;
-  if(store==='amazon')return true;
-  return !!(a.links&&a.links[product]);
-};
+window.dabbarhaAffiliateClick=function(store,product){try{const key='dab_affiliate_clicks';const data=JSON.parse(localStorage.getItem(key)||'{}');data[store]=(data[store]||0)+1;localStorage.setItem(key,JSON.stringify(data));const pk='dab_affiliate_product_clicks';const products=JSON.parse(localStorage.getItem(pk)||'{}');const productKey=store+'|'+(product||'منتج غير محدد');products[productKey]=(products[productKey]||0)+1;localStorage.setItem(pk,JSON.stringify(products));localStorage.setItem('dab_last_affiliate',JSON.stringify({store,product:product||'',at:Date.now()}))}catch(e){}};
+window.dabbarhaAffiliateUrl=function(store,product){const a=window.DABBIRHA_AFFILIATE&&window.DABBIRHA_AFFILIATE[store];if(!a||!a.enabled)return null;if(store==='amazon')return a.search+encodeURIComponent(product||'');if(store==='noon')return(a.links&&a.links[product])||(a.publicLinks&&a.publicLinks[product])||null;return a.url||null};
+window.dabbarhaIsAffiliateLink=function(store,product){const a=window.DABBIRHA_AFFILIATE&&window.DABBIRHA_AFFILIATE[store];if(!a||!a.enabled)return false;if(store==='amazon')return true;return!!(a.links&&a.links[product])};
