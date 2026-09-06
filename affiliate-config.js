@@ -1,8 +1,15 @@
 // إعداد روابط الإحالة في دبّرها
-// لا نضع أي رابط إحالة غير معتمد. يتم تفعيل المتجر فقط بعد إضافة رابط/معرّف رسمي.
+// لا نضع أي رابط إحالة غير معتمد. يتم تفعيل المنتج فقط بعد إضافة رابط رسمي من لوحة الشريك.
 window.DABBIRHA_AFFILIATE={
   amazon:{enabled:true,name:'أمازون',tag:'dabbirha-21',search:'https://www.amazon.sa/gp/search?tag=dabbirha-21&url=search-alias%3Daps&field-keywords='},
-  noon:{enabled:false,name:'نون',url:'https://www.noon.com/saudi-ar/'},
+  noon:{
+    enabled:true,
+    name:'نون',
+    url:'https://www.noon.com/saudi-ar/',
+    links:{
+      'Xiaomi Redmi Note 14':'https://s.noon.com/DlPsJs69Auk'
+    }
+  },
   temu:{enabled:false,name:'Temu',url:'https://www.temu.com/'},
   shein:{enabled:false,name:'SHEIN',url:'https://ar.shein.com/'},
   aliexpress:{enabled:false,name:'AliExpress',url:'https://www.aliexpress.com/'}
@@ -20,5 +27,6 @@ window.dabbarhaAffiliateUrl=function(store,product){
   const a=window.DABBIRHA_AFFILIATE&&window.DABBIRHA_AFFILIATE[store];
   if(!a||!a.enabled)return null;
   if(store==='amazon')return a.search+encodeURIComponent(product||'');
+  if(store==='noon')return (a.links&&a.links[product])||null;
   return a.url||null;
 };
