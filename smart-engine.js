@@ -1,5 +1,4 @@
-// محرك دبّرها الذكي v3: فهم النية والميزانية والاستخدام + دمج دفعات الأسعار المرصودة
-(function(){try{document.write('<script src="catalog-live.js?v=1"><\/script>')}catch(e){}})();
+// محرك دبّرها الذكي v4: تحميل الكتالوج يتم من index.html قبل المحرك
 window.DabbarhaSmart={
  normalize(t){const a='٠١٢٣٤٥٦٧٨٩',e='0123456789';return String(t||'').replace(/[٠-٩]/g,d=>e[a.indexOf(d)]).toLowerCase().replace(/[إأآ]/g,'ا').replace(/ة/g,'ه').replace(/ى/g,'ي')},
  budget(t){const n=this.normalize(t).match(/\d[\d,]*/g);return n?parseInt(n[n.length-1].replace(/,/g,''),10):null},
