@@ -13,6 +13,7 @@ window.DABBIRHA_AFFILIATE={
       'Samsung Galaxy A36 5G':'https://s.noon.com/tZ1olod7lHY',
       'Lenovo IdeaPad 1':'https://s.noon.com/ZjwADSOoJug',
       'HP 15':'https://s.noon.com/73u7Y2_YbvQ',
+      'Lenovo IdeaPad Slim 3':'https://s.noon.com/xgMdRw0Umy8',
       'ASUS Vivobook 15':'https://s.noon.com/ic0Knt8DuvU',
       'Samsung 24 بوصة':'https://s.noon.com/p2tQALN_VBY',
       'Samsung 32 بوصة':'https://s.noon.com/l2Cyl2RkQdw',
