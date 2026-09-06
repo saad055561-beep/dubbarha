@@ -872,7 +872,25 @@ return;
 box.innerHTML=list.map(function(p,index){
 
 let amazon='https://www.amazon.sa/s?k='+encodeURIComponent(p.name)+'&tag=dabbirha-21';
-let noon=p.name==='Samsung Galaxy A17 4G'?'https://s.noon.com/Rnq7ICBj8rE':'https://s.noon.com/0RUD-qR-3bY';
+const noonLinks={
+'Samsung Galaxy A17 4G':'https://s.noon.com/Rnq7ICBj8rE',
+'Samsung Galaxy A26 5G':'https://s.noon.com/gKinfuKUgLw',
+'Samsung Galaxy A36 5G':'https://s.noon.com/tZ1olod7lHY',
+'Lenovo IdeaPad 1':'https://s.noon.com/ZjwADSOoJug',
+'HP 15':'https://s.noon.com/73u7Y2_YbvQ',
+'Lenovo IdeaPad Slim 3':'https://s.noon.com/xgMdRw0Umy8',
+'ASUS Vivobook 15':'https://s.noon.com/ic0Knt8DuvU',
+' Samsung شاشة 24 بوصة':'https://s.noon.com/p2tQALN_VBY',
+'Samsung شاشة 24 بوصة':'https://s.noon.com/p2tQALN_VBY',
+'LG شاشة 27 بوصة':'https://s.noon.com/JuhU4m_pPPg',
+'Samsung شاشة 32 بوصة':'https://s.noon.com/l2Cyl2RkQdw',
+'LG UltraGear 27':'https://s.noon.com/CaueD21c6qI',
+'Samsung Galaxy Buds FE':'https://s.noon.com/QCoC6_-cr28',
+'Anker Soundcore':'https://s.noon.com/o7QQpIWMzbc',
+'Sony WH-CH520':'https://s.noon.com/g8XqKRSX684',
+'Sony WH-1000XM5':'https://s.noon.com/UOOdoWo4dOA'
+};
+let noon=noonLinks[p.name]||'https://s.noon.com/0RUD-qR-3bY';
 let badge=index===0?'⭐ اختيار دبّرها':index===1?'👍 خيار قوي':'🔎 بديل للمقارنة';
 
 return `
