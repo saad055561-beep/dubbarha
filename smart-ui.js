@@ -1,4 +1,4 @@
-// واجهة الذكاء في دبّرها: توصية + مقارنة + روابط المتاجر
+// واجهة الذكاء في دبّرها: توصية + مقارنة + روابط المتاجر + مشاركة النتيجة
 (function(){
 const labels={gaming:'ألعاب وأداء',camera:'تصوير',work:'عمل ودراسة',battery:'بطارية',cheap:'اقتصادي',premium:'جودة أعلى',value:'قيمة مقابل السعر'};
 const extra=[
@@ -28,6 +28,26 @@ function attachClicks(root){
   if(window.dabbarhaIsAffiliateLink&&window.dabbarhaIsAffiliateLink(this.dataset.store,decodeURIComponent(this.dataset.product||''))&&window.dabbarhaAffiliateClick){window.dabbarhaAffiliateClick(this.dataset.store,decodeURIComponent(this.dataset.product||''));}
  }));
 }
+function shareResult(){
+ const input=document.getElementById('q');
+ const raw=(input&&input.value?input.value:'').trim() || (typeof prefs!=='undefined'&&prefs.query?prefs.query:'').trim();
+ const url=new URL(location.href); url.search=''; if(raw)url.searchParams.set('q',raw);
+ const text='شوف اختياري من دبّرها 🏆\n'+(raw?'طلب: '+raw+'\n':'')+url.toString();
+ if(navigator.share){navigator.share({title:'اختيار دبّرها',text:'ترشيح ذكي حسب الميزانية والاستخدام',url:url.toString()}).catch(()=>{});return;}
+ if(navigator.clipboard){navigator.clipboard.writeText(text).then(()=>alert('تم نسخ رابط النتيجة للمشاركة 📋')).catch(()=>prompt('انسخ الرابط للمشاركة:',url.toString()));return;}
+ prompt('انسخ الرابط للمشاركة:',url.toString());
+}
+window.dabbarhaShareResult=shareResult;
+function addShareButton(list){
+ if(!list||document.getElementById('dab-share-btn'))return;
+ const b=document.createElement('button');
+ b.id='dab-share-btn';
+ b.className='primary';
+ b.style.cssText='width:100%;margin:0 0 14px;background:#e9f7f2;color:#087f5b;font-weight:bold';
+ b.textContent='📤 شارك نتيجة دبّرها';
+ b.onclick=shareResult;
+ list.parentNode.insertBefore(b,list);
+}
 function runSmart(){
  try{
   const input=document.getElementById('q');
@@ -54,9 +74,14 @@ function runSmart(){
    const sourceNote=p.priceSource?' • سعر مرصود من '+p.priceSource:' • سعر استرشادي';
    return '<div class="product"><button class="save" onclick="save('+JSON.stringify(p.name)+')">'+(sv.includes(p.name)?'❤️':'♡')+'</button><span class="tag">'+role+'</span><h3>'+p.name+'</h3><div class="price">'+p.price.toLocaleString()+' ريال</div><div class="meta">⭐ '+p.rating+' • درجة الملاءمة '+p._score+sourceNote+'</div><div class="why">'+reason+(p.price<=budget?' • ضمن الميزانية':' • أعلى من الميزانية')+'</div><div class="stores">'+storeLink('amazon',p.name)+storeLink('noon',p.name)+'</div></div>';
   }).join('');
+  addShareButton(list);
   attachClicks(list);
   return true;
  }catch(e){return fallback()}
 }
 window.dabbarhaSmartRun=runSmart;
+window.addEventListener('DOMContentLoaded',function(){
+ const params=new URLSearchParams(location.search),q=params.get('q');
+ if(q){const input=document.getElementById('q');if(input){input.value=q;setTimeout(()=>{if(typeof search==='function')search()},0)}}
+});
 })();
