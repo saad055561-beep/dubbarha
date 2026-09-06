@@ -841,12 +841,6 @@ return p.category===prefs.category;
 
 list=list
 
-.filter(function(p){
-
-return p.price<=Math.max(prefs.budget,300);
-
-})
-
 .sort(function(a,b){
 
 return score(b)-score(a);
