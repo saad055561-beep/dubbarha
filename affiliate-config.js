@@ -7,7 +7,8 @@ window.DABBIRHA_AFFILIATE={
     name:'نون',
     url:'https://www.noon.com/saudi-ar/',
     links:{
-      'Xiaomi Redmi Note 14':'https://s.noon.com/DlPsJs69Auk'
+      'Xiaomi Redmi Note 14':'https://s.noon.com/DlPsJs69Auk',
+      'Samsung Galaxy A17 4G':'https://s.noon.com/o7QQpIWMzbc'
     }
   },
   temu:{enabled:false,name:'Temu',url:'https://www.temu.com/'},
