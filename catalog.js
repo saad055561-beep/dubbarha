@@ -1,0 +1,18 @@
+window.DABBIRHA_PRODUCTS=[
+['Samsung Galaxy A17 4G','phone',719,4.4],['Samsung Galaxy A26 5G','phone',999,4.4],['Samsung Galaxy A36 5G','phone',1073,4.0],['Xiaomi Redmi Note 14','phone',775,4.1],['HONOR 400 5G','phone',1409,4.4],['Apple iPhone 16e','phone',2094,4.4],['Samsung Galaxy A56 5G','phone',1399,4.5],['Xiaomi Redmi Note 14 Pro','phone',1099,4.4],['OnePlus Nord CE 4 Lite','phone',799,4.3],['Google Pixel 9a','phone',1899,4.6],
+['Lenovo IdeaPad 1','laptop',1899,4.3],['HP 15','laptop',2299,4.4],['Lenovo IdeaPad Slim 3','laptop',2799,4.5],['ASUS Vivobook 15','laptop',2999,4.5],['Acer Aspire 3','laptop',1999,4.3],['HP Victus 15','laptop',3299,4.6],['Lenovo LOQ 15','laptop',3999,4.7],['ASUS TUF Gaming A15','laptop',4299,4.7],
+['Samsung شاشة 24 بوصة','screen',449,4.2],['LG شاشة 27 بوصة','screen',799,4.5],['Samsung شاشة 32 بوصة','screen',1199,4.5],['LG UltraGear 27','screen',1499,4.6],['AOC Gaming 24','screen',599,4.4],['MSI Gaming 27','screen',1299,4.6],
+['Samsung Galaxy Buds FE','headphones',299,4.4],['Anker Soundcore','headphones',399,4.5],['Sony WH-CH520','headphones',449,4.6],['Sony WH-1000XM5','headphones',1299,4.7],['JBL Tune 770NC','headphones',349,4.5],['Soundcore Q45','headphones',599,4.6],
+['Samsung Galaxy Tab A9','tablet',699,4.4],['Lenovo Tab M11','tablet',899,4.4],['Xiaomi Pad 7','tablet',1499,4.5],['iPad 11','tablet',1699,4.6],['Samsung Galaxy Tab S9 FE','tablet',1599,4.6],
+['Samsung 43 بوصة Smart TV','tv',1199,4.4],['TCL 55 بوصة 4K','tv',1599,4.5],['Samsung 65 بوصة 4K','tv',2499,4.6],['Hisense 55 بوصة 4K','tv',1399,4.4],['LG 55 بوصة 4K','tv',1799,4.5],
+['Xiaomi Redmi Watch 5','watch',399,4.4],['Samsung Galaxy Watch7','watch',799,4.6],['Apple Watch SE','watch',999,4.6],['Amazfit Active 2','watch',499,4.5],
+['Philips Air Fryer','kitchen',299,4.5],['Tefal قلاية هوائية','kitchen',449,4.5],['Black+Decker خلاط','kitchen',199,4.3],['Philips ماكينة قهوة','kitchen',399,4.4],['Ninja Air Fryer','kitchen',599,4.6],['قدر ضغط كهربائي','kitchen',299,4.3],
+['Xiaomi Robot Vacuum','home',899,4.4],['مكواة بخار Philips','home',249,4.4],['مكنسة Black+Decker','home',399,4.3],['مكنسة Xiaomi لاسلكية','home',699,4.5],['منقي هواء Xiaomi','home',549,4.5],
+['شاحن سيارة Anker','car',99,4.5],['منظم سيارة','car',79,4.2],['كاميرا سيارة 70mai','car',299,4.5],['منفاخ إطارات محمول','car',169,4.4],['مكنسة سيارة لاسلكية','car',129,4.3],
+['PlayStation 5 Slim','gaming',1999,4.8],['يد تحكم Xbox','gaming',249,4.6],['سماعة ألعاب HyperX','gaming',299,4.5],['Nintendo Switch OLED','gaming',1399,4.7],['يد تحكم PS5 DualSense','gaming',299,4.7],['كرسي ألعاب','gaming',599,4.5],
+['ماكينة حلاقة Philips','beauty',199,4.4],['مجفف شعر Remington','beauty',179,4.3],['فرشاة أسنان كهربائية Oral-B','beauty',299,4.5],['ماكينة تشذيب Braun','beauty',249,4.4],
+['كرسي سيارة للأطفال','kids',349,4.6],['سكوتر أطفال','kids',199,4.4],['حقيبة مدرسية أطفال','kids',129,4.3],['طاولة دراسة أطفال','kids',299,4.4],['لعبة تعليمية للأطفال','kids',89,4.4],
+['دمبل قابل للتعديل','sport',399,4.5],['حصيرة تمارين','sport',99,4.4],['حبل قفز رياضي','sport',59,4.3],['بنش تمارين','sport',499,4.4],['دراجة ثابتة','sport',799,4.5],
+['شنطة سفر متوسطة','travel',249,4.4],['حقيبة ظهر للسفر','travel',179,4.5],['شنطة لابتوب','travel',149,4.4],['شنطة سفر كبيرة','travel',329,4.5],['منظم حقائب سفر','travel',79,4.3],
+['Canon EOS R50','camera',2499,4.7],['Sony ZV-E10','camera',2699,4.7],['كاميرا مراقبة منزلية','camera',199,4.4],['Canon EOS 2000D','camera',1899,4.5],['DJI Osmo Pocket 3','camera',1999,4.8]
+].map(x=>({name:x[0],category:x[1],price:x[2],rating:x[3]}));
