@@ -806,11 +806,20 @@ return s;
 
 function reason(p){
 
-if(p.price<=prefs.budget){
+if(prefs.priority==='camera')
+return 'اختيار مناسب إذا كانت الكاميرا أولوية لك.';
 
+if(prefs.priority==='battery')
+return 'اختيار مناسب إذا كانت البطارية أولوية لك.';
+
+if(prefs.priority==='performance')
+return 'اختيار مناسب إذا كان الأداء والألعاب أولوية لك.';
+
+if(prefs.priority==='screen')
+return 'اختيار مناسب إذا كانت الشاشة والوضوح أولوية لك.';
+
+if(p.price<=prefs.budget)
 return 'ضمن ميزانيتك ومناسب للاختيار.';
-
-}
 
 return 'أعلى قليلًا من ميزانيتك، لكنه خيار إضافي للمقارنة.';
 
@@ -860,14 +869,17 @@ return;
 
 }
 
-box.innerHTML=list.map(function(p){
+box.innerHTML=list.map(function(p,index){
 
 let amazon='https://www.amazon.sa/s?k='+encodeURIComponent(p.name)+'&tag=dabbirha-21';
 let noon='https://www.noon.com/saudi-en/search?q='+encodeURIComponent(p.name);
+let badge=index===0?'⭐ اختيار دبّرها':index===1?'👍 خيار قوي':'🔎 بديل للمقارنة';
 
 return `
 
 <div class="product">
+
+<div style="display:inline-block;background:#e9f7f2;color:#087f5b;padding:6px 10px;border-radius:10px;font-size:13px;font-weight:bold;margin-bottom:10px;">${badge}</div>
 
 <h3>${p.name}</h3>
 
