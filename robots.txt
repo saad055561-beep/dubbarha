@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://saad055561-beep.github.io/dubbarha/sitemap.xml
