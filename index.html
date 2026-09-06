@@ -858,6 +858,9 @@ return;
 
 box.innerHTML=list.map(function(p){
 
+let amazon='https://www.amazon.sa/s?k='+encodeURIComponent(p.name);
+let noon='https://www.noon.com/saudi-en/search?q='+encodeURIComponent(p.name);
+
 return `
 
 <div class="product">
@@ -869,6 +872,20 @@ return `
 <div class="reason">${reason(p)}</div>
 
 <div class="reason">⭐ ${p.rating}</div>
+
+<div style="display:flex;gap:8px;margin-top:12px;">
+
+<a href="${amazon}" target="_blank" rel="noopener"
+style="flex:1;text-align:center;background:#eee;padding:12px;border-radius:12px;text-decoration:none;color:#111;font-weight:bold;">
+🛒 أمازون
+</a>
+
+<a href="${noon}" target="_blank" rel="noopener"
+style="flex:1;text-align:center;background:#eee;padding:12px;border-radius:12px;text-decoration:none;color:#111;font-weight:bold;">
+🛍️ نون
+</a>
+
+</div>
 
 </div>
 
