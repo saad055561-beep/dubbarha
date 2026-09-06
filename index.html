@@ -262,6 +262,10 @@ placeholder="مثال: جوال بـ 2000 ريال">
 
 <div id="resultsList"></div>
 
+<div style="margin-top:16px;padding:12px;background:#fff8e1;border-radius:12px;font-size:13px;color:#665500;text-align:center;">
+بصفتي أحد شركاء أمازون، فإنني أربح من عمليات الشراء المؤهلة.
+</div>
+
 </div>
 
 </section>
@@ -858,7 +862,7 @@ return;
 
 box.innerHTML=list.map(function(p){
 
-let amazon='https://www.amazon.sa/s?k='+encodeURIComponent(p.name);
+let amazon='https://www.amazon.sa/s?k='+encodeURIComponent(p.name)+'&tag=dabbirha-21';
 let noon='https://www.noon.com/saudi-en/search?q='+encodeURIComponent(p.name);
 
 return `
