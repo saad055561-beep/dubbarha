@@ -865,7 +865,7 @@ return;
 
 box.innerHTML=list.map(function(p,index){
 
-let amazon='https://www.amazon.sa/s?k='+encodeURIComponent(p.name)+'&tag=dabbirha-21';
+let amazon='https://www.amazon.sa/gp/search?tag=dabbirha-21&url=search-alias%3Daps&field-keywords='+encodeURIComponent(p.name);
 const noonLinks={
 'Samsung Galaxy A17 4G':'https://s.noon.com/Rnq7ICBj8rE',
 'Samsung Galaxy A26 5G':'https://s.noon.com/gKinfuKUgLw',
@@ -903,7 +903,7 @@ return `
 
 <div style="display:flex;gap:8px;margin-top:12px;">
 
-<a href="${amazon}" target="_blank" rel="noopener"
+<a href="${amazon}"
 style="flex:1;text-align:center;background:#eee;padding:12px;border-radius:12px;text-decoration:none;color:#111;font-weight:bold;">
 🛒 أمازون
 </a>
