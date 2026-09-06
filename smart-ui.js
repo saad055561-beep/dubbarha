@@ -1,14 +1,27 @@
 // واجهة الذكاء في دبّرها: توصية + مقارنة ثلاثية + مقارنة سريعة + روابط إحالة منظمة
 (function(){
 const labels={gaming:'ألعاب وأداء',camera:'تصوير',work:'عمل ودراسة',battery:'بطارية',cheap:'اقتصادي',premium:'جودة أعلى'};
+const extra=[
+{name:'Samsung Galaxy S26 Ultra 5G 256GB',category:'phone',price:3939,rating:4.7,tags:'رائد كاميرا أداء 5G',useCases:'تصوير ألعاب أداء احترافي',priceSource:'نون'},
+{name:'Samsung Galaxy S25 Ultra 5G 256GB',category:'phone',price:3166,rating:4.7,tags:'رائد كاميرا أداء 5G',useCases:'تصوير ألعاب أداء احترافي',priceSource:'نون'},
+{name:'Samsung Galaxy A57 5G 256GB',category:'phone',price:1509,rating:4.4,tags:'5G بطارية أداء قيمة',useCases:'يومي ألعاب تصوير',priceSource:'نون'},
+{name:'Samsung Galaxy Tab A11 64GB',category:'tablet',price:599,rating:4.4,tags:'اقتصادي دراسة تابلت',useCases:'دراسة أطفال ترفيه',priceSource:'نون'},
+{name:'Samsung 45W USB-C Charger',category:'car',price:89,rating:4.3,tags:'شحن سريع USB-C',useCases:'شحن جوال سيارة سفر',priceSource:'نون'},
+{name:'Amazon Basics AA Batteries 20-Pack',category:'home',price:28.5,rating:4.6,tags:'اقتصادي بطاريات',useCases:'منزل يومي',priceSource:'Amazon.sa'},
+{name:'Amazon Kindle 16GB',category:'tablet',price:399,rating:4.7,tags:'قراءة خفيف بطارية',useCases:'قراءة دراسة سفر',priceSource:'Amazon.sa'},
+{name:'Echo Dot 5th Gen',category:'home',price:239.99,rating:4.6,tags:'منزل ذكي صوت',useCases:'منزل ترفيه',priceSource:'Amazon.sa'}
+];
+const base=window.DABBIRHA_PRODUCTS||[];
+const products=base.concat(extra.filter(x=>!base.some(p=>p.name===x.name)));
+window.DABBIRHA_PRODUCTS=products;
 function fallback(){try{if(typeof render==='function'){render();return true}}catch(e){}return false}
 function runSmart(){
  try{
   const input=document.getElementById('q');
   const raw=(input&&input.value?input.value:'').trim() || (typeof prefs!=='undefined'&&prefs.query?prefs.query:'').trim();
   if(!raw||!window.DabbarhaSmart)return fallback();
-  const result=DabbarhaSmart.recommend(window.DABBIRHA_PRODUCTS||[],raw,(typeof prefs!=='undefined'&&prefs.category)||null);
-  const source=(window.DABBIRHA_PRODUCTS||[]).filter(p=>!((typeof prefs!=='undefined'&&prefs.category))||p.category===prefs.category).map(p=>({...p,_score:DabbarhaSmart.score(p,result.budget,result.intents||[])}));
+  const result=DabbarhaSmart.recommend(products,raw,(typeof prefs!=='undefined'&&prefs.category)||null);
+  const source=products.filter(p=>!((typeof prefs!=='undefined'&&prefs.category))||p.category===prefs.category).map(p=>({...p,_score:DabbarhaSmart.score(p,result.budget,result.intents||[])}));
   if(!source.length)return fallback();
   source.sort((a,b)=>b._score-a._score);
   const best=source[0];
@@ -26,7 +39,8 @@ function runSmart(){
   list.innerHTML=summary+compare+top.map(p=>{
    const role=p.name===best.name?'🏆 الأفضل لك':p.name===value.name?'💰 الأفضل قيمة':p.name===cheapest.name?'🪙 الأرخص':'⭐ خيار مناسب';
    const reason=result.intents.length?'طابقنا طلبك مع: '+result.intents.map(x=>labels[x]||x).join('، '):'اخترناه حسب السعر والتقييم والملاءمة';
-   return '<div class="product"><button class="save" onclick="save('+JSON.stringify(p.name)+')">'+(sv.includes(p.name)?'❤️':'♡')+'</button><span class="tag">'+role+'</span><h3>'+p.name+'</h3><div class="price">'+p.price.toLocaleString()+' ريال</div><div class="meta">⭐ '+p.rating+' • درجة الملاءمة '+p._score+'</div><div class="why">'+reason+(p.price<=budget?' • ضمن الميزانية':' • أعلى من الميزانية')+'</div><div class="stores">'+affiliate('amazon',p.name)+affiliate('noon',p.name)+'</div></div>'
+   const sourceNote=p.priceSource?' • سعر مرصود من '+p.priceSource:' • سعر استرشادي';
+   return '<div class="product"><button class="save" onclick="save('+JSON.stringify(p.name)+')">'+(sv.includes(p.name)?'❤️':'♡')+'</button><span class="tag">'+role+'</span><h3>'+p.name+'</h3><div class="price">'+p.price.toLocaleString()+' ريال</div><div class="meta">⭐ '+p.rating+' • درجة الملاءمة '+p._score+sourceNote+'</div><div class="why">'+reason+(p.price<=budget?' • ضمن الميزانية':' • أعلى من الميزانية')+'</div><div class="stores">'+affiliate('amazon',p.name)+affiliate('noon',p.name)+'</div></div>'
   }).join('');
   return true;
  }catch(e){return fallback()}
