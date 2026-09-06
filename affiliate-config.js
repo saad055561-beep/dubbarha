@@ -51,7 +51,7 @@ window.dabbarhaAffiliateUrl=function(store,product){
   const a=window.DABBIRHA_AFFILIATE&&window.DABBIRHA_AFFILIATE[store];
   if(!a||!a.enabled)return null;
   if(store==='amazon')return a.search+encodeURIComponent(product||'');
-  if(store==='noon')return (a.links&&a.links[product])||(a.publicLinks&&a.publicLinks[product])||null);
+  if(store==='noon')return (a.links&&a.links[product])||(a.publicLinks&&a.publicLinks[product])||null;
   return a.url||null;
 };
 window.dabbarhaIsAffiliateLink=function(store,product){
