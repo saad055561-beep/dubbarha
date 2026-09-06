@@ -10,6 +10,7 @@ window.DABBIRHA_AFFILIATE={
       'Xiaomi Redmi Note 14':'https://s.noon.com/DlPsJs69Auk',
       'Samsung Galaxy A17 4G':'https://s.noon.com/o7QQpIWMzbc',
       'Samsung Galaxy A26 5G':'https://s.noon.com/gKinfuKUgLw',
+      'Samsung Galaxy A36 5G':'https://s.noon.com/tZ1olod7lHY',
       'Lenovo IdeaPad 1':'https://s.noon.com/ZjwADSOoJug',
       'HP 15':'https://s.noon.com/73u7Y2_YbvQ',
       'ASUS Vivobook 15':'https://s.noon.com/ic0Knt8DuvU',
