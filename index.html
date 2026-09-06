@@ -872,7 +872,7 @@ return;
 box.innerHTML=list.map(function(p,index){
 
 let amazon='https://www.amazon.sa/s?k='+encodeURIComponent(p.name)+'&tag=dabbirha-21';
-let noon='https://s.noon.com/0RUD-qR-3bY';
+let noon=p.name==='Samsung Galaxy A17 4G'?'https://s.noon.com/Rnq7ICBj8rE':'https://s.noon.com/0RUD-qR-3bY';
 let badge=index===0?'⭐ اختيار دبّرها':index===1?'👍 خيار قوي':'🔎 بديل للمقارنة';
 
 return `
