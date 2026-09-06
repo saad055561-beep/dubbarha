@@ -26,7 +26,12 @@ window.DABBIRHA_AFFILIATE={
     },
     publicLinks:{
       'Samsung Galaxy A17 4G':'https://www.noon.com/saudi-ar/galaxy-a17-dual-sim-4g-black-4gb-ram-128gb-middle-east-version/N70214276V/p/',
-      'Samsung Galaxy A56 5G':'https://www.noon.com/saudi-ar/galaxy-a56-5g-dual-sim-awesome-graphite-8gb-ram-256gb-middle-east-version/N70158930V/p/'
+      'Samsung Galaxy A56 5G':'https://www.noon.com/saudi-ar/galaxy-a56-5g-dual-sim-awesome-graphite-8gb-ram-256gb-middle-east-version/N70158930V/p/',
+      'Samsung Galaxy S26 256GB':'https://supermall.noon.com/saudi-ar/electronics-and-mobiles/mobiles-and-accessories/noon-rocket/samsung/?f%5Bmobile_ram_size%5D%5B%5D=12gb_more&f%5Bmobile_ram_size%5D%5B%5D=8_gb&isCarouselView=false&limit=50&sort%5Bby%5D=popularity&sort%5Bdir%5D=desc',
+      'Samsung Galaxy S25 Ultra 256GB':'https://supermall.noon.com/saudi-ar/galaxy-s25-ultra-ai-dual-sim-titanium-grey-12gb-ram-256gb-5g-middle-east-version/N70140492V/p/',
+      'Samsung Galaxy A57 5G 256GB':'https://supermall.noon.com/saudi-ar/galaxy-a57-dual-sim-awesome-gray-8gb-ram-256gb-5g-middle-east-version/N70320368V/p/',
+      'Samsung Galaxy Tab A11 64GB':'https://supermall.noon.com/saudi-ar/electronics-and-mobiles/digital_home/samsung/?isCarouselView=false&limit=50&sort%5Bby%5D=popularity&sort%5Bdir%5D=desc',
+      'Samsung 45W USB-C Charger':'https://supermall.noon.com/saudi-ar/electronics-and-mobiles/digital_home/samsung/?isCarouselView=false&limit=50&sort%5Bby%5D=popularity&sort%5Bdir%5D=desc'
     }
   },
   temu:{enabled:false,name:'Temu',url:'https://www.temu.com/'},
