@@ -48,12 +48,12 @@ function addShareButton(list){
 function inferCategory(raw){
  const s=DabbarhaSmart.normalize(raw);
  const rules=[
-  ['phone',/جوال|هاتف|موبايل|ايفون|ايفون|iphone|سامسونج.*s\d|galaxy.*s\d/],
+  ['phone',/جوال|هاتف|موبايل|ايفون|iphone|سامسونج.*s\d|galaxy.*s\d/],
   ['laptop',/لابتوب|لاب توب|ماك بوك|macbook|حاسب|كمبيوتر|ابتوب/],
+  ['tv',/تلفزيون|شاشة تلفزيون|smart tv|tv/],
   ['screen',/شاشه|شاشة|مونيتور|monitor/],
   ['headphones',/سماعه|سماعة|سماعات|هيدفون|headphone|earbuds/],
-  ['tablet',/تابلت|ايباد|ايباد|ipad|لوحي/],
-  ['tv',/تلفزيون|شاشه تلفزيون|smart tv|tv/],
+  ['tablet',/تابلت|ايباد|ipad|لوحي/],
   ['watch',/ساعه|ساعة|ساعة ذكية|smartwatch/],
   ['gaming',/العاب|قيمنق|بلايستيشن|اكس بوكس|xbox|ps5|نينتندو|nintendo/],
   ['camera',/كاميرا|تصوير|camera/]
