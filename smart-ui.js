@@ -45,13 +45,30 @@ function addShareButton(list){
  b.onclick=shareResult;
  list.parentNode.insertBefore(b,list);
 }
+function inferCategory(raw){
+ const s=DabbarhaSmart.normalize(raw);
+ const rules=[
+  ['phone',/جوال|هاتف|موبايل|ايفون|ايفون|iphone|سامسونج.*s\d|galaxy.*s\d/],
+  ['laptop',/لابتوب|لاب توب|ماك بوك|macbook|حاسب|كمبيوتر|ابتوب/],
+  ['screen',/شاشه|شاشة|مونيتور|monitor/],
+  ['headphones',/سماعه|سماعة|سماعات|هيدفون|headphone|earbuds/],
+  ['tablet',/تابلت|ايباد|ايباد|ipad|لوحي/],
+  ['tv',/تلفزيون|شاشه تلفزيون|smart tv|tv/],
+  ['watch',/ساعه|ساعة|ساعة ذكية|smartwatch/],
+  ['gaming',/العاب|قيمنق|بلايستيشن|اكس بوكس|xbox|ps5|نينتندو|nintendo/],
+  ['camera',/كاميرا|تصوير|camera/]
+ ];
+ for(const [k,re] of rules)if(re.test(s))return k;
+ return null;
+}
 function runSmart(){
  try{
   const input=document.getElementById('q');
   const raw=(input&&input.value?input.value:'').trim() || (typeof prefs!=='undefined'&&prefs.query?prefs.query:'').trim();
   if(!raw||!window.DabbarhaSmart)return fallback();
-  const result=DabbarhaSmart.recommend(products,raw,(typeof prefs!=='undefined'&&prefs.category)||null);
-  const source=products.filter(p=>!((typeof prefs!=='undefined'&&prefs.category))||p.category===prefs.category).map(p=>({...p,_score:DabbarhaSmart.score(p,result.budget,result.intents||[])}));
+  const category=((typeof prefs!=='undefined'&&prefs.category)||inferCategory(raw));
+  const result=DabbarhaSmart.recommend(products,raw,category);
+  const source=products.filter(p=>!category||p.category===category).map(p=>({...p,_score:DabbarhaSmart.score(p,result.budget,result.intents||[])}));
   if(!source.length)return fallback();
   source.sort((a,b)=>b._score-a._score||a.price-b.price);
   const best=source[0],cheapest=source.slice().sort((a,b)=>a.price-b.price)[0];
