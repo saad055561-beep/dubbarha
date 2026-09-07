@@ -36,4 +36,10 @@ window.DABBIRHA_LIVE_PRODUCTS=[
 {name:'Samsung Galaxy A16 4GB 128GB',category:'phone',price:599,rating:4.4,tags:'اقتصادي بطارية',useCases:'يومي دراسة'},
 {name:'Apple iPhone 15 128GB',category:'phone',price:2749,rating:4.6,tags:'آيفون كاميرا أداء',useCases:'تصوير يومي'}
 ];
-(function(){window.DABBIRHA_PRODUCTS=(window.DABBIRHA_PRODUCTS||[]).concat(window.DABBIRHA_LIVE_PRODUCTS||[]);})();
+(function(){
+  const base=Array.isArray(window.DABBIRHA_PRODUCTS)?window.DABBIRHA_PRODUCTS:[];
+  const live=Array.isArray(window.DABBIRHA_LIVE_PRODUCTS)?window.DABBIRHA_LIVE_PRODUCTS:[];
+  const merged=new Map(base.map(p=>[p.name,p]));
+  live.forEach(p=>merged.set(p.name,p));
+  window.DABBIRHA_PRODUCTS=Array.from(merged.values());
+})();
