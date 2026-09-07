@@ -2,9 +2,6 @@
 (function(){
 const labels={gaming:'ألعاب وأداء',camera:'تصوير',work:'عمل ودراسة',battery:'بطارية',cheap:'اقتصادي',premium:'جودة أعلى',value:'قيمة مقابل السعر'};
 const extra=[
-{name:'Samsung Galaxy S26 Ultra 5G 256GB',category:'phone',price:3939,rating:4.7,tags:'رائد كاميرا أداء 5G',useCases:'تصوير ألعاب أداء احترافي',priceSource:'نون'},
-{name:'Samsung Galaxy S25 Ultra 5G 256GB',category:'phone',price:3166,rating:4.7,tags:'رائد كاميرا أداء 5G',useCases:'تصوير ألعاب أداء احترافي',priceSource:'نون'},
-{name:'Samsung Galaxy A57 5G 256GB',category:'phone',price:1509,rating:4.4,tags:'5G بطارية أداء قيمة',useCases:'يومي ألعاب تصوير',priceSource:'نون'},
 {name:'Samsung Galaxy Tab A11 64GB',category:'tablet',price:599,rating:4.4,tags:'اقتصادي دراسة تابلت',useCases:'دراسة أطفال ترفيه',priceSource:'نون'},
 {name:'Samsung 45W USB-C Charger',category:'car',price:89,rating:4.3,tags:'شحن سريع USB-C',useCases:'شحن جوال سيارة سفر',priceSource:'نون'},
 {name:'Amazon Basics AA Batteries 20-Pack',category:'home',price:28.5,rating:4.6,tags:'اقتصادي بطاريات',useCases:'منزل يومي',priceSource:'Amazon.sa'},
