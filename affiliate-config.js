@@ -7,7 +7,7 @@ window.DABBIRHA_AFFILIATE={
     name:'نون',
     url:'https://www.noon.com/saudi-ar/',
     // منتجات ظهرت لها صفحات نون مباشرة برسالة «تم الرفض»؛ نفتح بحث نون بدلاً منها.
-    searchOnly:['HONOR 400 5G','ASUS Vivobook 15'],
+    searchOnly:['HONOR 400 5G','ASUS Vivobook 15','Samsung Galaxy A26 5G'],
     links:{
       'Xiaomi Redmi Note 14':'https://s.noon.com/DlPsJs69Auk','Samsung Galaxy A26 5G':'https://s.noon.com/gKinfuKUgLw','Samsung Galaxy A36 5G':'https://s.noon.com/tZ1olod7lHY','Lenovo IdeaPad 1':'https://s.noon.com/ZjwADSOoJug','HP 15':'https://s.noon.com/73u7Y2_YbvQ','Lenovo IdeaPad Slim 3':'https://s.noon.com/xgMdRw0Umy8','ASUS Vivobook 15':'https://s.noon.com/ic0Knt8DuvU','Samsung 24 بوصة':'https://s.noon.com/p2tQALN_VBY','Samsung 32 بوصة':'https://s.noon.com/l2Cyl2RkQdw','LG UltraGear 27':'https://s.noon.com/CaueD21c6qI','Samsung Galaxy Buds FE':'https://s.noon.com/QCoC6_-cr28','Anker Soundcore':'https://s.noon.com/lt1Vb4jtZZQ','Sony WH-CH520':'https://s.noon.com/g8XqKRSX684','Sony WH-1000XM5':'https://s.noon.com/8dlC8stL1e8','HONOR 400 5G':'https://s.noon.com/WUAWZioMfTo','iPhone 16e':'https://s.noon.com/OwuVifEEtCU'
     },
